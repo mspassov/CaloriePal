@@ -1,14 +1,12 @@
-import HomeHeader from "@/components/HomeHeader";
 import { globalStyles } from "@/styles/global";
 import { ScrollView, Text } from "react-native";
 
-const HomePage = () => {
+const MealsPage = () => {
   return (
     <ScrollView style={globalStyles.container}>
-      <Text style={globalStyles.title}>CaloriePal</Text>
-      <HomeHeader />
+      <Text style={globalStyles.title}>All Meals</Text>
     </ScrollView>
   );
 };
 
-export default HomePage;
+export default MealsPage;
