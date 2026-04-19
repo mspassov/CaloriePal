@@ -1,10 +1,16 @@
+import { colors } from "@/styles/global";
 import { Stack } from "expo-router";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="meals" />
+    <Stack
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.header },
+        headerTintColor: "#fff",
+      }}
+    >
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="meals" options={{ title: "Home" }} />
     </Stack>
   );
 }
