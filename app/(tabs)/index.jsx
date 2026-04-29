@@ -11,6 +11,9 @@ const HomePage = () => {
       <Link href="/meals" style={{ color: "white", fontSize: 28 }}>
         Go to Meals
       </Link>
+      <Link href="/addMeal" style={{color: "green", fontSize: 30}}>
+        Add a meal
+      </Link>
     </ScrollView>
   );
 };
