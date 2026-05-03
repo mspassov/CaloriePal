@@ -1,6 +1,9 @@
+import { addMeal } from "@/storage/meals";
 import { colors, globalStyles } from "@/styles/global";
+import { router } from "expo-router";
 import { useState } from "react";
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
@@ -15,8 +18,31 @@ const AddMealForm = () => {
   const [carbs, setCarbs] = useState("");
   const [fat, setFat] = useState("");
 
-  const handleAdd = () => {
-    console.log("Meal added:", name);
+  const handleAdd = async () => {
+    if (!name || !calories) {
+      Alert.alert("Please fill out the form before submitting");
+      return;
+    }
+
+    const newMeal = {
+      name,
+      calories,
+      protein,
+      carbs,
+      fat,
+    };
+
+    await addMeal(newMeal);
+
+    setName("");
+    setCalories("");
+    setProtein("");
+    setCarbs("");
+    setFat("");
+
+    Alert.alert("Successfully added meal");
+
+    router.push("/");
   };
 
   return (
