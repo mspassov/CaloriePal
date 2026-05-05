@@ -2,7 +2,7 @@ import MealItem from "@/components/MealItem";
 import { globalStyles } from "@/styles/global";
 import { Text, View } from "react-native";
 
-const RecentMeals = ({ meals }) => {
+const RecentMeals = ({ meals, onDelete }) => {
   return (
     <View style={{ marginTop: 30 }}>
       <Text style={globalStyles.sectionTitle}>Recent Meals</Text>
@@ -15,11 +15,13 @@ const RecentMeals = ({ meals }) => {
           .map((meal) => (
             <MealItem
               key={meal.id}
+              id={meal.id}
               name={meal.name}
-              calories={meal.calories}
-              protein={meal.protein}
-              carbs={meal.carbs}
-              fat={meal.fat}
+              calories={Number(meal.calories)}
+              protein={Number(meal.protein)}
+              carbs={Number(meal.carbs)}
+              fat={Number(meal.fat)}
+              onDelete={onDelete}
             />
           ))
       )}

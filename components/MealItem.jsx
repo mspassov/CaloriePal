@@ -1,13 +1,28 @@
-import { StyleSheet, Text, View } from "react-native";
+import { deleteMeal } from "@/storage/meals";
+import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const MealItem = ({ name, calories, protein, carbs, fat }) => {
+const MealItem = ({ id, name, calories, protein, carbs, fat, onDelete }) => {
+  const handleLongPress = () => {
+    Alert.alert("Delete Meal", "Are you sure you want to delete this meal?", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: async () => {
+          await deleteMeal(id);
+          onDelete();
+        },
+      },
+    ]);
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onLongPress={handleLongPress}>
       <Text style={styles.name}>{name}</Text>
       <Text style={styles.macros}>
         {calories} cal / {protein}g P / {carbs}g C / {fat}g F
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

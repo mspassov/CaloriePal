@@ -28,3 +28,12 @@ export const addMeal = async (meal) => {
     JSON.stringify([newMeal, ...parsedMeals]),
   );
 };
+
+export const deleteMeal = async (id) => {
+  const res = await AsyncStorage.getItem(MEALS_KEY);
+  const meals = JSON.parse(res);
+
+  const filtered = meals.filter((meal) => meal.id != id);
+
+  await AsyncStorage.setItem(MEALS_KEY, JSON.stringify(filtered));
+};
