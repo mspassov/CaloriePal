@@ -1,5 +1,6 @@
 import { addMeal } from "@/storage/meals";
 import { colors, globalStyles } from "@/styles/global";
+import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import { useState } from "react";
 import {
@@ -40,6 +41,7 @@ const AddMealForm = () => {
     setCarbs("");
     setFat("");
 
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     Alert.alert("Successfully added meal");
 
     router.push("/");
